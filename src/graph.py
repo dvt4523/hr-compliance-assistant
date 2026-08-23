@@ -111,6 +111,12 @@ def build_graph(llm: Optional[LLMClient] = None):
         chunks, rel = search_policy(llm, state["user_message"], domain=domain,
                                     k=config.RETRIEVE_K)
         if not chunks:
+            # Computed domains have a deterministic tool backstop and inject their own
+            # governing citations in compute_node — so thin retrieval must NOT abstain
+            # here; let the flow reach compute. Only retrieval-only domains (benefits)
+            # abstain when nothing governs.
+            if domain in COMPUTED:
+                return {"retrieved": [], "top_relevance": rel, "status": "ok"}
             return {"retrieved": [], "top_relevance": rel, "status": "abstained",
                     "draft": _fallback(
                         "No policy or law passage on file governs this question.")}
