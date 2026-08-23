@@ -1,0 +1,28 @@
+{
+  "corpus": "Offline FLSA overtime legal corpus",
+  "domain": "flsa_overtime",
+  "doc_type": "law",
+  "notes": "Federal weekly overtime (29 U.S.C. §207) plus the California daily-overtime overlay (Cal. Lab. Code §510). Verbatim anchors verified 2026-08-23 via Cornell LII (federal) and CA leginfo (state). Federal has NO daily overtime; California adds daily overtime and double time. Numbers must match ../state_rules.json.",
+  "chunks": [
+    {
+      "id": "law-flsa-ot-us",
+      "doc_type": "law", "domain": "flsa_overtime", "jurisdiction": "federal",
+      "source": "29 U.S.C. §207", "citation": "29 U.S.C. §207(a)(1)",
+      "url": "https://www.law.cornell.edu/uscode/text/29/207",
+      "section": "207(a)(1)", "title": "Federal overtime — over 40 hours per week",
+      "revision": "1938", "effective": "1938-10-24", "retrieved": "2026-08-23",
+      "text": "Under the FLSA, a non-exempt employee who works more than forty hours in a workweek must be paid for the excess hours at a rate not less than one and one-half times the regular rate. Federal law has no daily overtime requirement.",
+      "verbatim_anchor": "one and one-half times the regular rate"
+    },
+    {
+      "id": "law-flsa-ot-ca",
+      "doc_type": "law", "domain": "flsa_overtime", "jurisdiction": "CA",
+      "source": "Cal. Lab. Code §510", "citation": "Cal. Lab. Code §510",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=510.",
+      "section": "510", "title": "California daily overtime and double time",
+      "revision": "2000", "effective": "2000-01-01", "retrieved": "2026-08-23",
+      "text": "In California, work in excess of eight hours in one workday and in excess of 40 hours in one workweek is paid at one and one-half times the regular rate. Work in excess of 12 hours in one day is paid at twice the regular rate (double time). California's daily rules apply on top of the federal weekly rule; the more protective result applies.",
+      "verbatim_anchor": "in excess of eight hours in one workday"
+    }
+  ]
+}

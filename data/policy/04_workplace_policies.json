@@ -1,0 +1,57 @@
+{
+  "source": "Northwind Engineering Employee Handbook",
+  "part": "Section WP-6 — Workplace Policies",
+  "current_revision": "2026-01",
+  "doc_type": "policy",
+  "notes": "Synthetic neutral/filler chunks that force retrieval to discriminate. WP-6.3 (parking/commuter) is a deliberately OUT-OF-SCOPE topic that exists in the handbook: a compliance question must not retrieve it, and a parking question is outside the assistant's FMLA/FLSA/Benefits scope -> decline/abstain.",
+  "chunks": [
+    {
+      "id": "pol-WP-6.1-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §WP-6.1",
+      "section": "WP-6.1",
+      "title": "Remote and Hybrid Work",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "general",
+      "text": "Eligible employees may work remotely or on a hybrid schedule with manager approval. Field-project staff work on-site as required by the project schedule."
+    },
+    {
+      "id": "pol-WP-6.2-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §WP-6.2",
+      "section": "WP-6.2",
+      "title": "Paid Time Off (PTO)",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "general",
+      "text": "Full-time employees accrue paid time off (PTO) based on years of service, beginning at 15 days per year and increasing to 20 days after five years. PTO is separate from the leaves of absence described in Section LV-4."
+    },
+    {
+      "id": "pol-WP-6.3-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §WP-6.3",
+      "section": "WP-6.3",
+      "title": "Parking and Commuter Benefits",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "general",
+      "text": "Northwind provides on-site parking at the Austin and San Jose offices at no charge and offers a monthly commuter subsidy for employees who use public transit. Parking at client and field-project sites is arranged per project."
+    },
+    {
+      "id": "pol-WP-6.4-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §WP-6.4",
+      "section": "WP-6.4",
+      "title": "Code of Conduct",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "general",
+      "text": "All employees are expected to act with integrity, treat colleagues and clients with respect, and comply with company policies and applicable law. Violations may result in disciplinary action up to and including termination."
+    }
+  ]
+}

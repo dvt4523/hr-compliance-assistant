@@ -1,0 +1,108 @@
+{
+  "corpus": "Offline FMLA legal corpus",
+  "domain": "fmla",
+  "doc_type": "law",
+  "notes": "Plain-language summaries of the governing FMLA regulations (29 CFR Part 825). Each chunk carries a verbatim_anchor quoted EXACTLY from the source and verified 2026-08-23 against Cornell LII (which mirrors the official eCFR text). Federal government works are public domain (17 U.S.C. §105). The load-bearing numbers are verbatim-accurate. Educational, not legal advice.",
+  "chunks": [
+    {
+      "id": "law-fmla-825.104",
+      "doc_type": "law", "domain": "fmla", "jurisdiction": "federal",
+      "source": "29 CFR Part 825", "citation": "29 CFR §825.104",
+      "url": "https://www.law.cornell.edu/cfr/text/29/825.104",
+      "section": "825.104", "title": "Covered employer",
+      "revision": "2013", "effective": "2013-03-08", "retrieved": "2026-08-23",
+      "text": "The FMLA covers a private employer that employs 50 or more employees for each working day during each of 20 or more calendar workweeks in the current or preceding calendar year. Public agencies and public and private elementary and secondary schools are covered regardless of the number of employees.",
+      "verbatim_anchor": "50 or more employees for each working day during each of 20 or more calendar workweeks in the current or preceding calendar year"
+    },
+    {
+      "id": "law-fmla-825.110-a1",
+      "doc_type": "law", "domain": "fmla", "jurisdiction": "federal",
+      "source": "29 CFR Part 825", "citation": "29 CFR §825.110(a)(1)",
+      "url": "https://www.law.cornell.edu/cfr/text/29/825.110",
+      "section": "825.110(a)(1)", "title": "Eligible employee — 12 months of employment",
+      "revision": "2013", "effective": "2013-03-08", "retrieved": "2026-08-23",
+      "text": "To be an eligible employee, the employee must have been employed by the employer for at least 12 months. The 12 months need not be consecutive.",
+      "verbatim_anchor": "at least 12 months"
+    },
+    {
+      "id": "law-fmla-825.110-a2",
+      "doc_type": "law", "domain": "fmla", "jurisdiction": "federal",
+      "source": "29 CFR Part 825", "citation": "29 CFR §825.110(a)(2)",
+      "url": "https://www.law.cornell.edu/cfr/text/29/825.110",
+      "section": "825.110(a)(2)", "title": "Eligible employee — 1,250 hours of service",
+      "revision": "2013", "effective": "2013-03-08", "retrieved": "2026-08-23",
+      "text": "To be an eligible employee, the employee must have been employed for at least 1,250 hours of service during the 12-month period immediately preceding the commencement of the leave.",
+      "verbatim_anchor": "at least 1,250 hours of service during the 12-month period immediately preceding the commencement of the leave"
+    },
+    {
+      "id": "law-fmla-825.110-a3",
+      "doc_type": "law", "domain": "fmla", "jurisdiction": "federal",
+      "source": "29 CFR Part 825", "citation": "29 CFR §825.110(a)(3)",
+      "url": "https://www.law.cornell.edu/cfr/text/29/825.110",
+      "section": "825.110(a)(3)", "title": "Eligible employee — worksite of 50 employees within 75 miles",
+      "revision": "2013", "effective": "2013-03-08", "retrieved": "2026-08-23",
+      "text": "To be an eligible employee, the employee must be employed at a worksite where 50 or more employees are employed by the employer within 75 miles of that worksite. Employer coverage does not by itself make an employee eligible; this worksite test applies to the individual employee.",
+      "verbatim_anchor": "50 or more employees are employed by the employer within 75 miles of that worksite"
+    },
+    {
+      "id": "law-fmla-825.111",
+      "doc_type": "law", "domain": "fmla", "jurisdiction": "federal",
+      "source": "29 CFR Part 825", "citation": "29 CFR §825.111",
+      "url": "https://www.law.cornell.edu/cfr/text/29/825.111",
+      "section": "825.111", "title": "Determining the worksite and the 75-mile radius",
+      "revision": "2013", "effective": "2013-03-08", "retrieved": "2026-08-23",
+      "text": "The 75-mile distance is measured by surface miles over public streets, roads, highways and waterways, by the shortest route. For employees with no fixed worksite (for example, construction, transportation, or field workers), the worksite is the site to which they are assigned as their home base, from which their work is assigned, or to which they report.",
+      "verbatim_anchor": "the worksite is the site to which they are assigned as their home base, from which their work is assigned, or to which they report"
+    },
+    {
+      "id": "law-fmla-825.112",
+      "doc_type": "law", "domain": "fmla", "jurisdiction": "federal",
+      "source": "29 CFR Part 825", "citation": "29 CFR §825.112",
+      "url": "https://www.law.cornell.edu/cfr/text/29/825.112",
+      "section": "825.112", "title": "Qualifying reasons for leave",
+      "revision": "2013", "effective": "2013-03-08", "retrieved": "2026-08-23",
+      "text": "FMLA leave may be taken for the reasons enumerated in the regulation: \"For birth of a son or daughter, and to care for the newborn child\"; placement of a son or daughter for adoption or foster care; to care for the employee's spouse, son, daughter, or parent with a serious health condition; the employee's own serious health condition that makes the employee unable to perform the job; a qualifying exigency arising from a family member's covered military active duty; and to care for a covered servicemember with a serious injury or illness.",
+      "verbatim_anchor": "For birth of a son or daughter, and to care for the newborn child"
+    },
+    {
+      "id": "law-fmla-825.200",
+      "doc_type": "law", "domain": "fmla", "jurisdiction": "federal",
+      "source": "29 CFR Part 825", "citation": "29 CFR §825.200",
+      "url": "https://www.law.cornell.edu/cfr/text/29/825.200",
+      "section": "825.200", "title": "Amount of leave (entitlement)",
+      "revision": "2013", "effective": "2013-03-08", "retrieved": "2026-08-23",
+      "text": "An eligible employee is entitled to a total of 12 workweeks of leave during any 12-month period for one or more qualifying reasons. For military caregiver leave, an eligible employee is entitled to a total of 26 workweeks of leave during a single 12-month period.",
+      "verbatim_anchor": "a total of 12 workweeks of leave during any 12-month period"
+    },
+    {
+      "id": "law-fmla-825.209",
+      "doc_type": "law", "domain": "fmla", "jurisdiction": "federal",
+      "source": "29 CFR Part 825", "citation": "29 CFR §825.209",
+      "url": "https://www.law.cornell.edu/cfr/text/29/825.209",
+      "section": "825.209", "title": "Maintenance of group health benefits during leave",
+      "revision": "2013", "effective": "2013-03-08", "retrieved": "2026-08-23",
+      "text": "During FMLA leave, the employer must maintain the employee's coverage under any group health plan on the same conditions as coverage would have been provided if the employee had been continuously employed during the entire leave period. The employee remains responsible for their share of premiums.",
+      "verbatim_anchor": "on the same conditions as coverage would have been provided if the employee had been continuously employed during the entire leave period"
+    },
+    {
+      "id": "law-fmla-825.302",
+      "doc_type": "law", "domain": "fmla", "jurisdiction": "federal",
+      "source": "29 CFR Part 825", "citation": "29 CFR §825.302",
+      "url": "https://www.law.cornell.edu/cfr/text/29/825.302",
+      "section": "825.302", "title": "Employee notice — foreseeable leave",
+      "revision": "2013", "effective": "2013-03-08", "retrieved": "2026-08-23",
+      "text": "When the need for FMLA leave is foreseeable, an employee must provide the employer at least 30 days advance notice before FMLA leave is to begin.",
+      "verbatim_anchor": "at least 30 days advance notice"
+    },
+    {
+      "id": "law-fmla-825.303",
+      "doc_type": "law", "domain": "fmla", "jurisdiction": "federal",
+      "source": "29 CFR Part 825", "citation": "29 CFR §825.303",
+      "url": "https://www.law.cornell.edu/cfr/text/29/825.303",
+      "section": "825.303", "title": "Employee notice — unforeseeable leave",
+      "revision": "2013", "effective": "2013-03-08", "retrieved": "2026-08-23",
+      "text": "When the need for FMLA leave is not foreseeable, the employee must provide notice to the employer as soon as practicable under the facts and circumstances of the particular case.",
+      "verbatim_anchor": "as soon as practicable under the facts and circumstances of the particular case"
+    }
+  ]
+}

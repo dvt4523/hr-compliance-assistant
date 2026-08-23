@@ -1,0 +1,93 @@
+{
+  "source": "Northwind Engineering Employee Handbook",
+  "part": "Section LV-4 — Leaves of Absence",
+  "current_revision": "2026-01",
+  "doc_type": "policy",
+  "notes": "Synthetic company policy (fully fictional). No url/verbatim_anchor by design — policy is not law. LV-4.2 exists in two revisions to exercise drop_superseded(); the current LV-4.2 is deliberately BELOW the FMLA 12-week floor to exercise the conflict-flag; LV-4.3 is deliberately MORE generous than the floor (must NOT be flagged).",
+  "chunks": [
+    {
+      "id": "pol-LV-4.1-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §LV-4.1",
+      "section": "LV-4.1",
+      "title": "Leaves of Absence — Overview",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "fmla",
+      "text": "Northwind Engineering offers several types of leave of absence, including family and medical leave, parental leave, bereavement leave, and jury duty leave. This section describes who is eligible for each type of leave and how to request it. Some leaves are unpaid and some are paid, as specified in the sections below."
+    },
+    {
+      "id": "pol-LV-4.2-2024-06",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §LV-4.2",
+      "section": "LV-4.2",
+      "title": "Family and Medical Leave",
+      "revision": "2024-06",
+      "effective": "2024-06-01",
+      "domain": "fmla",
+      "text": "Eligible employees may take up to 6 weeks of unpaid family and medical leave in a rolling 12-month period for a qualifying reason. [SUPERSEDED by the 2026-01 revision of LV-4.2.]"
+    },
+    {
+      "id": "pol-LV-4.2-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §LV-4.2",
+      "section": "LV-4.2",
+      "title": "Family and Medical Leave",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "fmla",
+      "text": "Eligible employees may take up to 8 weeks of unpaid family and medical leave in a rolling 12-month period for a qualifying reason, including the employee's own serious health condition or the need to care for a spouse, child, or parent with a serious health condition."
+    },
+    {
+      "id": "pol-LV-4.3-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §LV-4.3",
+      "section": "LV-4.3",
+      "title": "Parental Leave",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "fmla",
+      "text": "Northwind provides up to 12 weeks of paid parental leave for the birth of a child or the placement of a child for adoption or foster care. Paid parental leave is provided in addition to any unpaid family and medical leave for which the employee is eligible."
+    },
+    {
+      "id": "pol-LV-4.4-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §LV-4.4",
+      "section": "LV-4.4",
+      "title": "Requesting Leave and Advance Notice",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "fmla",
+      "text": "Employees must submit leave requests through the HR portal at least 30 days in advance when the need for leave is foreseeable. When the need for leave is not foreseeable, employees must give notice as soon as practicable, generally within two business days of learning of the need."
+    },
+    {
+      "id": "pol-LV-4.5-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §LV-4.5",
+      "section": "LV-4.5",
+      "title": "Bereavement Leave",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "general",
+      "text": "Employees may take up to 5 days of paid bereavement leave following the death of an immediate family member. Additional unpaid time may be granted at the manager's discretion."
+    },
+    {
+      "id": "pol-LV-4.6-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §LV-4.6",
+      "section": "LV-4.6",
+      "title": "Jury Duty Leave",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "general",
+      "text": "Employees called to jury duty are granted paid leave for the duration of their service. Employees must present the jury summons to their manager and the HR portal when requesting the leave."
+    }
+  ]
+}

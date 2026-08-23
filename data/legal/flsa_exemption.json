@@ -1,0 +1,28 @@
+{
+  "corpus": "Offline FLSA white-collar exemption (salary-basis) legal corpus",
+  "domain": "flsa_overtime",
+  "doc_type": "law",
+  "notes": "The salary-level test for the executive/administrative/professional exemption -- federal (29 CFR §541.600) and California (Cal. Lab. Code §515). Tagged domain flsa_overtime because exemption determines overtime eligibility. Supports the misclassification demo (E006): an employee labeled exempt but paid below the applicable salary threshold fails the salary-basis test and is owed overtime. Verbatim anchors verified 2026-08-23 (Cornell LII / CA leginfo). Federal $684/wk = $35,568/yr is the 2019 level restored by DOL's May-2026 technical amendment; the CA threshold derives from 2x the state minimum wage.",
+  "chunks": [
+    {
+      "id": "law-flsa-exempt-us",
+      "doc_type": "law", "domain": "flsa_overtime", "jurisdiction": "federal",
+      "source": "29 CFR §541.600", "citation": "29 CFR §541.600",
+      "url": "https://www.law.cornell.edu/cfr/text/29/541.600",
+      "section": "541.600", "title": "Federal exemption salary level",
+      "revision": "2020", "effective": "2020-01-01", "retrieved": "2026-08-23",
+      "text": "To qualify for the executive, administrative, or professional (white-collar) overtime exemption, an employee must be compensated on a salary basis at a rate of not less than $684 per week (equivalent to $35,568 per year), in addition to meeting the duties test. An employee paid below this level cannot be exempt and is owed overtime.",
+      "verbatim_anchor": "not less than $684 per week"
+    },
+    {
+      "id": "law-flsa-exempt-ca",
+      "doc_type": "law", "domain": "flsa_overtime", "jurisdiction": "CA",
+      "source": "Cal. Lab. Code §515", "citation": "Cal. Lab. Code §515(a)",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=LAB&sectionNum=515.",
+      "section": "515(a)", "title": "California exemption salary threshold",
+      "revision": "2000", "effective": "2000-01-01", "retrieved": "2026-08-23",
+      "text": "In California, to qualify for a white-collar overtime exemption an employee must earn a monthly salary equivalent to no less than two times the state minimum wage for full-time employment. At the 2026 minimum wage of $16.90/hr this equals $70,304 per year; an employee paid below it cannot be exempt in California and is owed overtime.",
+      "verbatim_anchor": "no less than two times the state minimum wage for full-time employment"
+    }
+  ]
+}

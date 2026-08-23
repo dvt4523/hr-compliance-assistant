@@ -1,0 +1,29 @@
+{
+  "corpus": "Offline FLSA minimum-wage legal corpus",
+  "domain": "flsa_minwage",
+  "doc_type": "law",
+  "notes": "Federal floor (29 U.S.C. §206) plus the California overlay. Verbatim anchors verified 2026-08-23: federal via Cornell LII; CA rate via the CA DIR 2026 adjustment announcement. The machine-readable values the tool computes with live in ../state_rules.json; these chunks are the citable prose. Numbers must match state_rules.json.",
+  "chunks": [
+    {
+      "id": "law-flsa-minwage-us",
+      "doc_type": "law", "domain": "flsa_minwage", "jurisdiction": "federal",
+      "source": "29 U.S.C. §206", "citation": "29 U.S.C. §206(a)(1)",
+      "url": "https://www.law.cornell.edu/uscode/text/29/206",
+      "section": "206(a)(1)", "title": "Federal minimum wage",
+      "revision": "2009", "effective": "2009-07-24", "retrieved": "2026-08-23",
+      "text": "The federal minimum wage under the Fair Labor Standards Act is $7.25 an hour. A state or locality may set a higher minimum wage, in which case the higher rate applies.",
+      "verbatim_anchor": "$7.25 an hour"
+    },
+    {
+      "id": "law-flsa-minwage-ca",
+      "doc_type": "law", "domain": "flsa_minwage", "jurisdiction": "CA",
+      "source": "Cal. Lab. Code §1182.12; CA DIR 2026 adjustment",
+      "citation": "Cal. Lab. Code §1182.12",
+      "url": "https://www.dir.ca.gov/DIRNews/2025/2025-118.html",
+      "section": "1182.12", "title": "California minimum wage (2026)",
+      "revision": "2026", "effective": "2026-01-01", "retrieved": "2026-08-23",
+      "text": "California's minimum wage is $16.90 per hour effective January 1, 2026, for all employers. California's minimum is adjusted annually for inflation and exceeds the federal $7.25 floor, so the California rate applies to California worksites.",
+      "verbatim_anchor": "$16.90 per hour"
+    }
+  ]
+}

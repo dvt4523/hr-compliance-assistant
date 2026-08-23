@@ -1,0 +1,57 @@
+{
+  "source": "Northwind Engineering Employee Handbook",
+  "part": "Section BN-5 — Employee Benefits",
+  "current_revision": "2026-01",
+  "doc_type": "policy",
+  "notes": "Synthetic. Benefits is a RETRIEVAL-ONLY domain: the assistant quotes these clauses but must ABSTAIN on computed/account-specific asks (an employee's exact 401(k) balance, individual premium, projected match dollars). BN-5.3 (benefit continuation during leave) is the cross-domain chunk that pairs with the FMLA §825.209 law chunk.",
+  "chunks": [
+    {
+      "id": "pol-BN-5.1-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §BN-5.1",
+      "section": "BN-5.1",
+      "title": "401(k) Retirement Plan",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "benefits",
+      "text": "Employees become eligible to participate in the Northwind 401(k) retirement plan after 90 days of employment. The company matches 50% of an employee's contributions up to 6% of eligible pay. Employer matching contributions vest under a 3-year cliff schedule, meaning the employee becomes fully vested after three years of service."
+    },
+    {
+      "id": "pol-BN-5.2-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §BN-5.2",
+      "section": "BN-5.2",
+      "title": "Health Insurance",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "benefits",
+      "text": "Employees who work 30 or more hours per week are eligible for medical, dental, and vision insurance. New hires may enroll within 30 days of their start date. Existing employees may add, drop, or change coverage during the annual open enrollment period each November. Medical plans are offered in Bronze, Silver, and Gold tiers."
+    },
+    {
+      "id": "pol-BN-5.3-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §BN-5.3",
+      "section": "BN-5.3",
+      "title": "Benefit Continuation During Leave",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "benefits",
+      "text": "Group health insurance coverage continues during an approved family and medical leave on the same terms as if the employee were actively working. The employee remains responsible for paying their share of the monthly premium during the leave."
+    },
+    {
+      "id": "pol-BN-5.4-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §BN-5.4",
+      "section": "BN-5.4",
+      "title": "Life and Disability Insurance",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "benefits",
+      "text": "Northwind provides basic life insurance and short-term disability coverage at no cost to benefits-eligible employees. Employees may purchase additional voluntary life and long-term disability coverage during enrollment."
+    }
+  ]
+}

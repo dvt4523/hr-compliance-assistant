@@ -1,0 +1,37 @@
+{
+  "employer": "Northwind Engineering",
+  "industry": "Civil & environmental engineering consultancy",
+  "notes": "Fictional employer for the HR-compliance demo. Covered employer under FMLA (300+ employees company-wide). Jurisdiction, worksite headcount, and pay params resolve per site; employees link to a site via site_id.",
+  "sites": [
+    {
+      "site_id": "NW-HQ-TX",
+      "name": "Austin HQ",
+      "site_kind": "office",
+      "state": "TX",
+      "location": "Austin, TX",
+      "headcount_within_75mi": 140,
+      "pay_period": "biweekly",
+      "description": "Headquarters. Large worksite (>=50 within 75 miles), so employees here pass the FMLA worksite test. Texas has no state wage floor above federal, so FLSA (federal) applies."
+    },
+    {
+      "site_id": "NW-OFF-CA",
+      "name": "San Jose Regional Office",
+      "site_kind": "office",
+      "state": "CA",
+      "location": "San Jose, CA",
+      "headcount_within_75mi": 140,
+      "pay_period": "biweekly",
+      "description": "West Coast regional office. Large worksite (>=50 within 75 miles). California overlay applies: higher minimum wage and daily overtime."
+    },
+    {
+      "site_id": "NW-PROJ-TX",
+      "name": "Permian Basin Field Project",
+      "site_kind": "project_site",
+      "state": "TX",
+      "location": "Midland, TX",
+      "headcount_within_75mi": 18,
+      "pay_period": "biweekly",
+      "description": "Remote engineering field project. Only 18 employees within 75 miles and no other Northwind site nearby, so employees assigned here FAIL the FMLA 50/75-mile worksite test even though the employer is covered company-wide. Teaching point: employer coverage != employee eligibility."
+    }
+  ]
+}

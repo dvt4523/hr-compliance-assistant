@@ -1,0 +1,69 @@
+{
+  "source": "Northwind Engineering Employee Handbook",
+  "part": "Section CH-3 — Compensation & Working Hours",
+  "current_revision": "2026-01",
+  "doc_type": "policy",
+  "notes": "Synthetic company policy. Pay clauses are written to be COMPLIANT (they state Northwind pays at or above the legal floor and applies the more-protective OT rule); the actual pay-compliance issues in the demo (E003 below CA minimum, E006 misclassified) come from the employee DB, not from a non-compliant handbook clause. These chunks give a policy citation to pair with the FLSA law chunks.",
+  "chunks": [
+    {
+      "id": "pol-CH-3.1-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §CH-3.1",
+      "section": "CH-3.1",
+      "title": "Employee Classification (Exempt and Non-Exempt)",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "flsa_overtime",
+      "text": "Employees are classified as either exempt or non-exempt under the Fair Labor Standards Act (FLSA). Non-exempt employees are eligible for overtime pay. Exempt employees are paid on a salary basis and are not eligible for overtime. Classification depends on both the employee's salary level and their actual job duties."
+    },
+    {
+      "id": "pol-CH-3.2-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §CH-3.2",
+      "section": "CH-3.2",
+      "title": "Overtime",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "flsa_overtime",
+      "text": "Non-exempt employees are paid overtime at one and one-half times their regular rate of pay for hours worked over 40 in a workweek. In states that require daily overtime, such as California, Northwind applies the more protective standard, including overtime after 8 hours in a workday and double time after 12 hours."
+    },
+    {
+      "id": "pol-CH-3.3-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §CH-3.3",
+      "section": "CH-3.3",
+      "title": "Meal and Rest Periods",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "general",
+      "text": "Non-exempt employees are provided meal and rest periods in accordance with applicable state law. Employees at the San Jose office follow California meal and rest break requirements."
+    },
+    {
+      "id": "pol-CH-3.4-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §CH-3.4",
+      "section": "CH-3.4",
+      "title": "Paydays and Pay Periods",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "general",
+      "text": "Employees are paid on a biweekly schedule, every other Friday. Pay includes all wages earned in the preceding two-week pay period, including any overtime."
+    },
+    {
+      "id": "pol-CH-3.5-2026",
+      "doc_type": "policy",
+      "source": "Northwind Engineering Employee Handbook",
+      "citation": "Handbook §CH-3.5",
+      "section": "CH-3.5",
+      "title": "Minimum Wage",
+      "revision": "2026-01",
+      "effective": "2026-01-01",
+      "domain": "flsa_minwage",
+      "text": "Northwind Engineering pays all employees at or above the applicable federal, state, and local minimum wage. Where a state or local minimum wage is higher than the federal minimum wage, the higher rate applies."
+    }
+  ]
+}
