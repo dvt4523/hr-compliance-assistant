@@ -1,0 +1,14 @@
+# HR Compliance Assistant — Python 3.11+
+# Core
+openai>=1.40           # Siraya is OpenAI-compatible (base_url override)
+python-dotenv>=1.0     # load SIRAYA_API_KEY from .env
+pydantic>=2.5          # typed contracts / structured output
+
+# Orchestration
+langgraph==1.2.10      # pinned: StateGraph, interrupt(), checkpointer
+
+# UI (thin layer over the headless graph)
+gradio>=4.0
+
+# Dev / test
+pytest>=8.0

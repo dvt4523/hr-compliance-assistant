@@ -19,3 +19,7 @@ venv/
 
 # Local artifacts
 *.log
+
+# Runtime artifacts
+.venv/
+data/case_log.jsonl
