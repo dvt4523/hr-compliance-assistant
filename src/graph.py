@@ -102,6 +102,11 @@ def build_graph(llm: Optional[LLMClient] = None):
         return {"route": rd.model_dump(), "status": "ok"}
 
     def retrieve_node(state: CaseState) -> dict:
+        # Ablation: with RAG disabled the drafter gets no grounding context, but the
+        # flow continues (compute + draft) rather than abstaining, so we can measure
+        # what the deterministic tool backstop alone produces.
+        if not config.RAG_ENABLED:
+            return {"retrieved": [], "top_relevance": 0.0, "status": "ok"}
         domain = state["route"]["domain"]
         chunks, rel = search_policy(llm, state["user_message"], domain=domain,
                                     k=config.RETRIEVE_K)
@@ -123,7 +128,8 @@ def build_graph(llm: Optional[LLMClient] = None):
         result = res.model_dump()
         # Inject the determination's own governing chunks so the drafter always sees
         # the deciding rule (generic retrieval doesn't reliably surface the exact prong).
-        gov = data_loader.get_chunks_by_citation(result.get("citations", []))
+        # This injection is itself a grounding path, so it's disabled under the no-RAG ablation.
+        gov = data_loader.get_chunks_by_citation(result.get("citations", [])) if config.RAG_ENABLED else []
         gov_ids = {c["id"] for c in gov}
         merged = gov + [c for c in state.get("retrieved", []) if c["id"] not in gov_ids]
         return {"tool_result": result, "retrieved": merged}

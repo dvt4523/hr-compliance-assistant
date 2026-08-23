@@ -43,6 +43,12 @@ CONF_BAR = 0.6           # escalate/clarify if route confidence below this
 PREFILTER_K = 8          # keyword candidates before rerank
 RETRIEVE_K = 4           # chunks passed to the drafter
 
+# RAG toggle — used for the eval ablation. When False, the drafter gets NO grounding
+# context: retrieval is skipped AND the compute-tool citation injection is disabled
+# (that injection is itself a grounding path). The deterministic tool_result still
+# computes and is passed to the drafter. Off => os.getenv("RAG_ENABLED") in {"0","false","no"}.
+RAG_ENABLED = os.getenv("RAG_ENABLED", "1").lower() not in ("0", "false", "no")
+
 # Bounded loops
 MAX_CLARIFY_LOOPS = 2
 MAX_REVISE = 1
