@@ -257,6 +257,8 @@ CSS = """
   letter-spacing:.2px; line-height:1.1; }
 .app-header .brand .thin { opacity:.62; font-weight:500; }
 .app-header .subtitle { opacity:.82; font-size:.82rem; font-weight:400; margin-top:3px; max-width:72ch; }
+/* header sits on a dark navy band -> force light text (beat Gradio's light-mode default) */
+.app-header .brand, .app-header .subtitle, .app-header .brand .thin { color:#f6f1e7 !important; }
 .disc-chip { flex:none; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
   color:#f0e6cf; border:1px solid rgba(240,230,207,.4); border-radius:999px; padding:3px 11px; }
 
