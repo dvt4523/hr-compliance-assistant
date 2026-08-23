@@ -57,6 +57,13 @@ def _decline(msg: str) -> dict:
     ).model_dump()
 
 
+def _fallback(lead: str, status: str = "not_covered") -> dict:
+    """A non-answerable exit that routes the HR admin to a human (escalation)."""
+    return GroundedDetermination(
+        status=status, answer=f"{lead} {config.ESCALATE_MSG}", disclaimer=config.DISCLAIMER
+    ).model_dump()
+
+
 def build_graph(llm: Optional[LLMClient] = None):
     llm = llm or LLMClient()
 
@@ -83,9 +90,9 @@ def build_graph(llm: Optional[LLMClient] = None):
         )
         if rd.domain == "out_of_scope":
             return {"route": rd.model_dump(), "status": "declined",
-                    "draft": _decline(
-                        "That's outside what I handle (FMLA leave, FLSA pay, and benefits). "
-                        "For that, please consult HR leadership or counsel.")}
+                    "draft": _fallback(
+                        "That's outside what I handle (FMLA leave, FLSA pay, and benefits).",
+                        status="declined")}
         if rd.needs_clarification or rd.confidence < config.CONF_BAR:
             q = rd.clarifying_question or "Could you clarify exactly what you'd like to know?"
             return {"route": rd.model_dump(), "status": "needs_clarification",
@@ -100,10 +107,8 @@ def build_graph(llm: Optional[LLMClient] = None):
                                     k=config.RETRIEVE_K)
         if not chunks:
             return {"retrieved": [], "top_relevance": rel, "status": "abstained",
-                    "draft": GroundedDetermination(
-                        status="not_covered",
-                        answer="No policy or law passage governs this question, so I can't answer it.",
-                        disclaimer=config.DISCLAIMER).model_dump()}
+                    "draft": _fallback(
+                        "No policy or law passage on file governs this question.")}
         return {"retrieved": chunks, "top_relevance": rel, "status": "ok"}
 
     def compute_node(state: CaseState) -> dict:
@@ -143,12 +148,20 @@ def build_graph(llm: Optional[LLMClient] = None):
         return {"draft": det.model_dump(), "status": "ok"}
 
     def guard_output_node(state: CaseState) -> dict:
+        domain = state["route"]["domain"]
         det = GroundedDetermination(**state["draft"])
         fidelity = guardrails.check_citation_fidelity(det)
-        report = GuardrailReport(checks=[fidelity])
-        if not fidelity.passed and state.get("revise_count", 0) < config.MAX_REVISE:
+        grounding = guardrails.check_grounding(det, domain)
+        report = GuardrailReport(checks=[fidelity, grounding])
+        ok = fidelity.passed and grounding.passed
+        if not ok and state.get("revise_count", 0) < config.MAX_REVISE:
+            # one bounded reconcile loop (reviewer != author): redraft once
             return {"guardrail_report": report.model_dump(),
                     "revise_count": state.get("revise_count", 0) + 1, "status": "revise"}
+        if not ok:
+            # fail closed: never present an ungrounded compliance answer -> escalate
+            return {"guardrail_report": report.model_dump(), "status": "abstained_fallback",
+                    "draft": _fallback("I don't have a well-grounded answer for this.")}
         return {"guardrail_report": report.model_dump(), "status": "ok"}
 
     def approval_gate_node(state: CaseState) -> dict:
@@ -185,7 +198,12 @@ def build_graph(llm: Optional[LLMClient] = None):
         if s["status"] == "abstained":
             return "end"
         return "compute" if s["route"]["domain"] in COMPUTED else "draft"
-    def after_guard_output(s): return "draft" if s["status"] == "revise" else "approve"
+    def after_guard_output(s):
+        if s["status"] == "revise":
+            return "draft"
+        if s["status"] == "abstained_fallback":
+            return "end"          # nothing to finalize/approve on a fallback abstention
+        return "approve"
     def after_approval(s):
         choice = (s.get("approval") or {}).get("choice", "approve")
         if choice == "ask":
@@ -210,7 +228,7 @@ def build_graph(llm: Optional[LLMClient] = None):
     g.add_edge("compute", "draft")
     g.add_edge("draft", "guard_output")
     g.add_conditional_edges("guard_output", after_guard_output,
-                            {"draft": "draft", "approve": "approval_gate"})
+                            {"draft": "draft", "approve": "approval_gate", "end": END})
     g.add_conditional_edges("approval_gate", after_approval,
                             {"finalize": "finalize", "retrieve": "retrieve"})
     g.add_edge("finalize", END)
@@ -224,9 +242,13 @@ def run_turn(graph, employee_id: str, user_message: str,
     cfg = {"configurable": {"thread_id": f"{employee_id}:{turn}"}}
     state: dict[str, Any] = {"employee_id": employee_id, "user_message": user_message,
                              "turn": turn}
-    result = graph.invoke(state, cfg)
-    while result.get("__interrupt__"):
-        req = result["__interrupt__"][0].value
-        decision = on_interrupt(req)
-        result = graph.invoke(Command(resume=decision), cfg)
-    return result
+    try:
+        result = graph.invoke(state, cfg)
+        while result.get("__interrupt__"):
+            req = result["__interrupt__"][0].value
+            decision = on_interrupt(req)
+            result = graph.invoke(Command(resume=decision), cfg)
+        return result
+    except Exception as e:  # noqa: BLE001 - graceful terminal fallback, never crash a turn
+        return {"status": "error", "error": str(e),
+                "draft": _fallback("I hit an unexpected error handling this.", status="declined")}

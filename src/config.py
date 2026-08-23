@@ -50,6 +50,12 @@ DISCLAIMER = (
     "Confirm with counsel before acting."
 )
 
+# Standing human-escalation fallback for anything the assistant can't answer reliably.
+ESCALATE_MSG = (
+    "I can't answer this reliably from the policy and law on file — "
+    "please escalate to HR leadership or employment counsel."
+)
+
 # --- Data paths ------------------------------------------------------------
 REPO_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = REPO_ROOT / "data"
