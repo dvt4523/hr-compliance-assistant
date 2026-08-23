@@ -6,15 +6,15 @@
   },
   "summary": {
     "n": 18,
-    "task_success": 0.833,
-    "citation_correctness": 0.692,
-    "abstention_precision": 0.5,
+    "task_success": 0.944,
+    "citation_correctness": 0.846,
+    "abstention_precision": 0.75,
     "abstention_recall": 1.0,
-    "mean_tokens": 3687,
-    "mean_seconds": 13.78,
+    "mean_tokens": 3874,
+    "mean_seconds": 13.65,
     "task_success_by_domain": {
       "fmla": 0.857,
-      "flsa": 0.667,
+      "flsa": 1.0,
       "benefits": 1.0,
       "guardrail": 1.0
     }
@@ -31,9 +31,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4760,
-      "seconds": 20.18,
-      "answer": "Yes. The employee is eligible for FMLA leave because the computed determination shows that the employee satisfies all three federal eligibility requirements: at",
+      "tokens": 4762,
+      "seconds": 18.22,
+      "answer": "Yes. This employee is eligible for FMLA leave because the employee satisfies all three federal eligibility requirements: at least 12 months of employment, at le",
       "cited": [
         "825.110(a)(1)",
         "825.110(a)(2)",
@@ -51,9 +51,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4761,
-      "seconds": 24.32,
-      "answer": "No. This employee is not eligible for FMLA leave because the employee has been employed for 8 months, but eligibility requires employment for at least 12 months",
+      "tokens": 4799,
+      "seconds": 15.62,
+      "answer": "No. This employee is not eligible for FMLA leave because they have been employed for 8 months, but eligibility requires employment for \"at least 12 months.\" Alt",
       "cited": [
         "825.110(a)(1)"
       ]
@@ -69,9 +69,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4711,
-      "seconds": 15.12,
-      "answer": "No. The employee is not eligible for FMLA leave because the employee worked 900 hours during the preceding 12 months, which is below the required 1,250 hours.",
+      "tokens": 4778,
+      "seconds": 15.61,
+      "answer": "No. The employee is not eligible for FMLA leave because the employee worked 900 hours during the preceding 12 months, which is below the required 1,250 hours. T",
       "cited": [
         "825.110(a)(2)"
       ]
@@ -87,9 +87,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4731,
-      "seconds": 17.74,
-      "answer": "No. This employee is not eligible for FMLA leave because the worksite requirement is not met: 18 employees are employed within 75 miles of the worksite, fewer t",
+      "tokens": 4734,
+      "seconds": 16.64,
+      "answer": "No. This employee is not eligible for FMLA leave because the worksite requirement is not met: the employee has 18 employees within 75 miles of the worksite, whi",
       "cited": [
         "825.110(a)(3)"
       ]
@@ -105,9 +105,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4685,
-      "seconds": 16.56,
-      "answer": "This employee can take 2 more weeks of FMLA leave. The federal FMLA entitlement is 12 workweeks during any 12-month period, and the computed determination repor",
+      "tokens": 4695,
+      "seconds": 16.13,
+      "answer": "This employee can take 2 more weeks of FMLA leave. The federal FMLA entitlement is 12 workweeks during a 12-month period, and the authoritative determination sh",
       "cited": [
         "825.200"
       ]
@@ -123,8 +123,8 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 6713,
-      "seconds": 25.64,
+      "tokens": 6820,
+      "seconds": 26.82,
       "answer": "I don't have a well-grounded answer for this. I can't answer this reliably from the policy and law on file \u2014 please escalate to HR leadership or employment coun",
       "cited": []
     },
@@ -139,9 +139,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4035,
-      "seconds": 12.82,
-      "answer": "Yes. Bonding with a new child is covered as FMLA leave for the birth of a son or daughter and care for the newborn child, or placement of a child for adoption o",
+      "tokens": 4106,
+      "seconds": 13.4,
+      "answer": "Yes. Under federal FMLA, bonding with a new child qualifies when the leave is for the birth of a son or daughter and care for the newborn child, or for placemen",
       "cited": [
         "825.112"
       ]
@@ -157,8 +157,8 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 3984,
-      "seconds": 15.16,
+      "tokens": 3985,
+      "seconds": 13.17,
       "answer": "No. The employee is paid $15.00 per hour, which is $1.90 below California\u2019s applicable minimum wage of $16.90 per hour.",
       "cited": [
         "1182.12"
@@ -175,8 +175,8 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4194,
-      "seconds": 15.64,
+      "tokens": 4186,
+      "seconds": 14.9,
       "answer": "Yes. The employee is paid $9.00 per hour, which is above the applicable federal minimum wage of $7.25 per hour.",
       "cited": [
         "206(a)(1)"
@@ -186,33 +186,37 @@
       "id": "ot-ca-daily",
       "domain": "flsa",
       "kind": "overtime",
-      "status": "abstained",
-      "draft_status": "not_covered",
-      "task_pass": false,
+      "status": "finalized",
+      "draft_status": "answered",
+      "task_pass": true,
       "citation_applicable": true,
-      "citation_pass": false,
+      "citation_pass": true,
       "should_withhold": false,
-      "did_withhold": true,
-      "tokens": 2254,
-      "seconds": 8.0,
-      "answer": "No policy or law passage on file governs this question. I can't answer this reliably from the policy and law on file \u2014 please escalate to HR leadership or emplo",
-      "cited": []
+      "did_withhold": false,
+      "tokens": 4288,
+      "seconds": 15.43,
+      "answer": "Yes. This employee has 2.0 hours of overtime this week at one and one-half times the regular rate, with calculated overtime pay of $66.00. California\u2019s daily ov",
+      "cited": [
+        "510"
+      ]
     },
     {
       "id": "ot-fed-weekly",
       "domain": "flsa",
       "kind": "overtime",
-      "status": "abstained",
-      "draft_status": "not_covered",
-      "task_pass": false,
+      "status": "finalized",
+      "draft_status": "answered",
+      "task_pass": true,
       "citation_applicable": true,
-      "citation_pass": false,
+      "citation_pass": true,
       "should_withhold": false,
-      "did_withhold": true,
-      "tokens": 2254,
-      "seconds": 9.1,
-      "answer": "No policy or law passage on file governs this question. I can't answer this reliably from the policy and law on file \u2014 please escalate to HR leadership or emplo",
-      "cited": []
+      "did_withhold": false,
+      "tokens": 4269,
+      "seconds": 14.89,
+      "answer": "Yes. This employee has 4.0 hours of overtime this week, paid at one and one-half times the regular rate. The computed overtime pay is $54.00.",
+      "cited": [
+        "207(a)(1)"
+      ]
     },
     {
       "id": "ot-exempt",
@@ -225,9 +229,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4061,
-      "seconds": 16.81,
-      "answer": "No. The computed determination classifies this employee as exempt, and exempt employees are not eligible for overtime. The computed overtime owed is $0.00.",
+      "tokens": 3989,
+      "seconds": 16.0,
+      "answer": "No. The computed determination classifies the employee as exempt, and exempt employees are not eligible for overtime pay.",
       "cited": [
         "CH-3.1"
       ]
@@ -243,12 +247,12 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4779,
-      "seconds": 16.95,
-      "answer": "Yes. For this employee, the computed determination classifies them as effectively non-exempt, so overtime is owed despite being salaried. The determination calc",
+      "tokens": 4821,
+      "seconds": 18.01,
+      "answer": "Yes. This employee is classified as non-exempt for overtime purposes despite being labeled exempt and salaried. Under the applicable California rule, overtime a",
       "cited": [
-        "CH-3.1",
-        "510"
+        "510",
+        "CH-3.1"
       ]
     },
     {
@@ -262,9 +266,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 3242,
-      "seconds": 8.27,
-      "answer": "The company matches 50% of your contributions, up to 6% of eligible pay. Employer matching contributions fully vest after three years of service under a 3-year ",
+      "tokens": 3123,
+      "seconds": 8.44,
+      "answer": "The company matches 50% of an employee\u2019s contributions up to 6% of eligible pay. Employees become eligible after 90 days of employment, and employer matching co",
       "cited": [
         "BN-5.1"
       ]
@@ -280,9 +284,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4365,
-      "seconds": 15.62,
-      "answer": "Yes. This employee keeps group health insurance coverage during FMLA leave on the same conditions as if continuously employed, and remains responsible for their",
+      "tokens": 3582,
+      "seconds": 11.64,
+      "answer": "Yes. During FMLA leave, the employee keeps group health insurance coverage on the same conditions as if continuously employed and remains responsible for their ",
       "cited": [
         "825.209"
       ]
@@ -298,8 +302,8 @@
       "citation_pass": false,
       "should_withhold": true,
       "did_withhold": true,
-      "tokens": 2060,
-      "seconds": 6.91,
+      "tokens": 2027,
+      "seconds": 7.6,
       "answer": "No policy or law passage on file governs this question. I can't answer this reliably from the policy and law on file \u2014 please escalate to HR leadership or emplo",
       "cited": []
     },
