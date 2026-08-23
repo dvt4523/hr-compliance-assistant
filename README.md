@@ -11,9 +11,15 @@ through a human approval gate.
 
 ## Setup (to be completed during build)
 - Python 3.11+
-- `cp .env.example .env` and set `GEMINI_API_KEY` (never commit `.env`)
+- `cp .env.example .env` and set `SIRAYA_API_KEY` (never commit `.env`)
 - `pip install -r requirements.txt`
 
+## LLM provider
+- **Siraya model router** (OpenAI-compatible), chosen for cost optimization. Base URL `https://llm.siraya.ai/v1`.
+- Chat via the `openai` SDK (`base_url` override); retrieval via Siraya's `/v1/rerank` (no embeddings endpoint, so retrieval is rerank-first).
+- Default models: chat `gemini-2.5-flash`, rerank `voyage-rerank-2.5` (override via env).
+- Per-call cost is returned by the API and used for the evaluation's cost metric.
+
 ## Notes
-- Provider/model, run/test/eval instructions, and AI-assistance disclosure will be filled in as the project is built.
+- Full run/test/eval instructions and AI-assistance disclosure will be filled in as the project is built.
 - Educational tool — **not legal advice.**
