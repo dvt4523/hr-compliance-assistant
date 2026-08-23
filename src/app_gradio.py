@@ -147,7 +147,7 @@ def _answer_bubble(result: dict, prefix: str = "") -> str:
 def open_case(emp_id, session):
     session = session or uuid.uuid4().hex[:8]
     if not emp_id:
-        return (session, None, '<div class="profile-empty">Select an employee to open a case.</div>',
+        return (session, None, '<div class="profile-empty">Pick an employee to open a case.</div>',
                 0, None, [], _EMPTY_EVIDENCE, gr.update(visible=False))
     return (session, emp_id, _profile_html(emp_id), 0, None, [], _EMPTY_EVIDENCE,
             gr.update(visible=False))
@@ -237,31 +237,29 @@ CSS = """
 
 /* header */
 .app-header { background:linear-gradient(135deg,#12324e,#1c466b); color:#f6f1e7;
-  border-radius:16px; padding:22px 26px; margin-bottom:6px;
-  box-shadow:0 10px 30px -14px rgba(18,50,78,.6); }
-.app-header .brand { font-family:'Fraunces',Georgia,serif; font-size:1.7rem; font-weight:600;
+  border-radius:14px; padding:11px 20px; margin-bottom:10px; display:flex;
+  align-items:center; justify-content:space-between; gap:14px;
+  box-shadow:0 8px 24px -16px rgba(18,50,78,.6); }
+.app-header .brand { font-family:'Fraunces',Georgia,serif; font-size:1.3rem; font-weight:600;
   letter-spacing:.2px; line-height:1.1; }
 .app-header .brand .thin { opacity:.62; font-weight:500; }
-.app-header .tagline { opacity:.82; margin-top:6px; font-size:.93rem; max-width:60ch; }
-.app-header .rule { height:2px; width:54px; background:var(--gold); margin:12px 0 0; border-radius:2px; }
-.disc-chip { display:inline-block; margin-top:12px; font-size:.72rem; letter-spacing:.06em;
-  text-transform:uppercase; color:#f0e6cf; border:1px solid rgba(240,230,207,.4);
-  border-radius:999px; padding:3px 11px; }
+.disc-chip { flex:none; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
+  color:#f0e6cf; border:1px solid rgba(240,230,207,.4); border-radius:999px; padding:3px 11px; }
 
 /* section labels */
 .sec-label { font-size:.72rem; letter-spacing:.13em; text-transform:uppercase;
   color:#8a7a52; font-weight:700; margin:4px 2px -4px; }
 
 /* employee card picker */
-.emp-grid { display:grid !important; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
-.emp-card { text-align:left !important; white-space:pre-line !important; line-height:1.35 !important;
-  background:#fffef9 !important; border:1px solid var(--line) !important; border-radius:12px !important;
-  padding:12px 14px !important; color:#3a5670 !important; font-weight:600 !important; font-size:.8rem !important;
+.emp-grid { display:grid !important; grid-template-columns:1fr; gap:7px; }
+.emp-card { text-align:left !important; white-space:pre-line !important; line-height:1.3 !important;
+  background:#fffef9 !important; border:1px solid var(--line) !important; border-radius:10px !important;
+  padding:9px 12px !important; color:#3a5670 !important; font-weight:600 !important; font-size:.75rem !important;
   box-shadow:none !important; min-height:auto !important;
   transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
-.emp-card::first-line { font-size:.98rem; color:var(--navy); }
-.emp-card:hover { border-color:var(--gold) !important; transform:translateY(-1px);
-  box-shadow:0 6px 18px -12px rgba(18,50,78,.5) !important; }
+.emp-card::first-line { font-size:.9rem; color:var(--navy); }
+.emp-card:hover { border-color:var(--gold) !important; transform:translateX(2px);
+  box-shadow:-2px 4px 14px -12px rgba(18,50,78,.5) !important; }
 
 /* profile */
 .profile-card { border:1px solid var(--line); border-radius:14px; background:#fffef9; padding:16px 18px; }
@@ -338,39 +336,37 @@ def build_blocks():
             '<span class="disc-chip">Educational demo · not legal advice</span>'
             '</div>')
 
-        gr.HTML('<div class="sec-label">Select a case</div>')
-        emp_buttons = []
-        with gr.Row(elem_classes="emp-grid"):
-            for _eid, _e in data_loader.load_employees().items():
-                _b = gr.Button(f"{_e['name']}\n{_e['job_title']}", elem_classes="emp-card")
-                emp_buttons.append((_b, _eid))
-        profile_html = gr.HTML('<div class="profile-empty">Select a case above to begin.</div>')
-
         with gr.Row(equal_height=False):
-            with gr.Column(scale=3):
-                gr.HTML('<div class="sec-label">Conversation</div>')
-                chatbot = gr.Chatbot(height=380, show_label=False)  # messages-dict format (Gradio 6 default)
-                with gr.Row():
-                    ex1 = gr.Button("Eligible for FMLA?", size="sm")
-                    ex2 = gr.Button("Any overtime this week?", size="sm")
-                    ex3 = gr.Button("Paid at least minimum wage?", size="sm")
-                    ex4 = gr.Button("Insurance during leave?", size="sm")
-                question = gr.Textbox(label="Ask about this employee", lines=1,
-                                      placeholder="e.g. Is this employee eligible for FMLA leave?")
-                ask_btn = gr.Button("Ask", variant="primary")
+            # left — employee picker (sidebar)
+            with gr.Column(scale=2, min_width=170):
+                gr.HTML('<div class="sec-label">Employees</div>')
+                emp_buttons = []
+                with gr.Column(elem_classes="emp-grid"):
+                    for _eid, _e in data_loader.load_employees().items():
+                        _b = gr.Button(f"{_e['name']}\n{_e['job_title']}", elem_classes="emp-card")
+                        emp_buttons.append((_b, _eid))
 
+            # middle — conversation
+            with gr.Column(scale=5):
+                gr.HTML('<div class="sec-label">Conversation</div>')
+                chatbot = gr.Chatbot(height=360, show_label=False)
+                with gr.Row():
+                    question = gr.Textbox(show_label=False, scale=5, lines=1,
+                                          placeholder="Ask about the selected employee…")
+                    ask_btn = gr.Button("Ask", variant="primary", scale=1, min_width=90)
                 with gr.Group(visible=False, elem_classes="approval") as approval_row:
                     contract_html = gr.HTML()
                     edit_box = gr.Textbox(label="Revise the answer (used only with “Edit & approve”)",
-                                          lines=3)
+                                          lines=2)
                     with gr.Row():
                         approve_btn = gr.Button("Approve", variant="primary")
                         edit_btn = gr.Button("Edit & approve", variant="secondary")
                         deny_btn = gr.Button("Deny", variant="stop")
 
-            with gr.Column(scale=2):
+            # right — case details (profile + evidence)
+            with gr.Column(scale=3):
                 gr.HTML('<div class="sec-label">Case</div>')
-                # profile is above; here we mirror evidence
+                profile_html = gr.HTML('<div class="profile-empty">Pick an employee to open a case.</div>')
                 evidence_html = gr.HTML(_EMPTY_EVIDENCE)
 
         # wiring
@@ -383,12 +379,6 @@ def build_blocks():
                    cfg_state, turn_state, question]
         ask_btn.click(on_ask, [question, emp_state, session, turn_state, chatbot], ask_out)
         question.submit(on_ask, [question, emp_state, session, turn_state, chatbot], ask_out)
-
-        for btn, ex in [(ex1, "Is this employee eligible for FMLA leave?"),
-                        (ex2, "Does this employee have any overtime this week?"),
-                        (ex3, "Is this employee being paid at least minimum wage?"),
-                        (ex4, "Does this employee keep health insurance during FMLA leave?")]:
-            btn.click(lambda e=ex: e, None, question)
 
         dec_out = [chatbot, approval_row, turn_state]
         approve_btn.click(lambda cfg, t, ch: on_decide("approve", "", cfg, t, ch),
