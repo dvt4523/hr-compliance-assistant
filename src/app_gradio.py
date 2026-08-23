@@ -243,6 +243,7 @@ CSS = """
 .app-header .brand { font-family:'Fraunces',Georgia,serif; font-size:1.3rem; font-weight:600;
   letter-spacing:.2px; line-height:1.1; }
 .app-header .brand .thin { opacity:.62; font-weight:500; }
+.app-header .subtitle { opacity:.82; font-size:.82rem; font-weight:400; margin-top:3px; max-width:72ch; }
 .disc-chip { flex:none; font-size:.68rem; letter-spacing:.06em; text-transform:uppercase;
   color:#f0e6cf; border:1px solid rgba(240,230,207,.4); border-radius:999px; padding:3px 11px; }
 
@@ -253,6 +254,7 @@ CSS = """
 /* employee card picker */
 .emp-grid { display:grid !important; grid-template-columns:1fr; gap:7px; }
 .emp-card { text-align:left !important; white-space:pre-line !important; line-height:1.3 !important;
+  justify-content:flex-start !important; align-items:flex-start !important;
   background:#fffef9 !important; border:1px solid var(--line) !important; border-radius:10px !important;
   padding:9px 12px !important; color:#3a5670 !important; font-weight:600 !important; font-size:.75rem !important;
   box-shadow:none !important; min-height:auto !important;
@@ -328,12 +330,12 @@ def build_blocks():
 
         gr.HTML(
             '<div class="app-header">'
+            '<div class="hd-left">'
             '<div class="brand">Northwind HR <span class="thin">· Compliance Assistant</span></div>'
-            '<div class="rule"></div>'
-            '<div class="tagline">Grounded answers on FMLA leave, FLSA pay, and benefits — '
-            'retrieved from company policy and public law, computed by deterministic tools, '
-            'and confirmed by you before anything is recorded.</div>'
-            '<span class="disc-chip">Educational demo · not legal advice</span>'
+            '<div class="subtitle">Quick, clearly-sourced answers on employee leave, pay, and '
+            'benefits — you review and approve every answer before it is final.</div>'
+            '</div>'
+            '<span class="disc-chip">Not legal advice</span>'
             '</div>')
 
         with gr.Row(equal_height=False):
