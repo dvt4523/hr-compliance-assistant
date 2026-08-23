@@ -50,12 +50,14 @@ def _profile_html(emp_id: str) -> str:
     site = data_loader.site_for_employee(emp)
     pay = (f"${emp['pay_rate_hourly']:.2f}/hr" if emp.get("pay_rate_hourly")
            else f"${emp.get('annual_salary', 0):,}/yr")
+    pay_kind = ("paid hourly · earns overtime" if emp.get("classification") == "non-exempt"
+                else "salaried · exempt from overtime")
     stats = [
-        (f"{emp['tenure_months']}", "months tenure"),
-        (f"{emp['hours_last_12mo']:,}", "hrs / 12mo"),
-        (_esc(emp["classification"]), pay),
-        (f"{site['headcount_within_75mi']}", "within 75 mi"),
-        (f"{emp['leave_taken_weeks_ytd']} wk", "FMLA taken"),
+        (f"{emp['tenure_months']}", "months employed"),
+        (f"{emp['hours_last_12mo']:,}", "hours worked, past year"),
+        (pay, pay_kind),
+        (f"{site['headcount_within_75mi']}", "employees within 75 miles"),
+        (f"{emp['leave_taken_weeks_ytd']}", "weeks of leave used this year"),
     ]
     stat_html = "".join(
         f'<div class="stat"><b>{v}</b><span>{_esc(label)}</span></div>' for v, label in stats)
@@ -72,9 +74,18 @@ def _profile_html(emp_id: str) -> str:
     </div>"""
 
 
-_EMPTY_EVIDENCE = ('<div class="evidence empty"><div class="ev-title">Evidence</div>'
-                   '<p class="ev-empty">Ask a question and the grounded citations, '
-                   'jurisdiction basis, and any policy-vs-law conflict appear here.</p></div>')
+_EMPTY_EVIDENCE = ('<div class="evidence empty"><div class="ev-title">Sources</div>'
+                   '<p class="ev-empty">Ask a question and the sources behind the answer, '
+                   'which rules apply, and any handbook-vs-law conflicts will show here.</p></div>')
+
+# Plain-language names for the internal domain codes (never show raw codes to HR).
+DOMAIN_LABEL = {
+    "fmla": "Family & medical leave",
+    "flsa_minwage": "Minimum wage",
+    "flsa_overtime": "Overtime & pay type",
+    "benefits": "Benefits",
+    "out_of_scope": "Outside scope",
+}
 
 
 def _evidence_html(result: dict, tokens: int, seconds: float) -> str:
@@ -82,11 +93,11 @@ def _evidence_html(result: dict, tokens: int, seconds: float) -> str:
     route = result.get("route", {}) or {}
     pills = []
     if route.get("domain"):
-        pills.append(f'<span class="pill pill-domain">{_esc(route["domain"])}</span>')
-    if route.get("confidence") is not None:
-        pills.append(f'<span class="pill">confidence {route["confidence"]}</span>')
+        label = DOMAIN_LABEL.get(route["domain"], route["domain"])
+        pills.append(f'<span class="pill pill-domain">{_esc(label)}</span>')
     if det.get("basis"):
-        pills.append(f'<span class="pill pill-basis">basis: {_esc(det["basis"])}</span>')
+        basis_txt = "state law" if det["basis"] == "state" else "federal law"
+        pills.append(f'<span class="pill pill-basis">Based on {basis_txt}</span>')
     pills_html = f'<div class="pills">{"".join(pills)}</div>' if pills else ""
 
     cites = det.get("citations") or []
@@ -110,22 +121,24 @@ def _evidence_html(result: dict, tokens: int, seconds: float) -> str:
     conflict_html = ""
     if conflict:
         conflict_html = (
-            f'<div class="conflict"><span class="conflict-badge">Policy vs law conflict</span>'
-            f'Handbook <b>{_esc(conflict["policy_value"])}</b> is below the legal floor of '
+            f'<div class="conflict"><span class="conflict-badge">Handbook conflicts with the law</span>'
+            f'The handbook says <b>{_esc(conflict["policy_value"])}</b>, but the law requires at least '
             f'<b>{_esc(conflict["law_floor"])}</b>.<br><em>{_esc(conflict["resolution"])}</em></div>')
 
-    meta = f'<div class="meta">~{tokens:,} tokens &middot; {seconds:.1f}s</div>' if tokens else ""
+    meta = f'<div class="meta">Answered in {seconds:.1f}s</div>' if seconds else ""
     disc = f'<div class="ev-disclaimer">{_esc(det.get("disclaimer",""))}</div>' if det.get("disclaimer") else ""
-    return (f'<div class="evidence"><div class="ev-title">Evidence</div>'
+    return (f'<div class="evidence"><div class="ev-title">Sources</div>'
             f'{pills_html}{cite_html}{conflict_html}{disc}{meta}</div>')
 
 
 def _contract_html(req: dict) -> str:
-    rows = [("Action", req.get("action", "")), ("Why gated", req.get("reason_for_gate", "")),
-            ("Effect", req.get("effect", "")), ("Reversibility", req.get("reversibility", ""))]
+    rows = [("Decision", req.get("action", "")),
+            ("Why you're asked", req.get("reason_for_gate", "")),
+            ("If you approve", req.get("effect", "")),
+            ("Can this be undone?", req.get("reversibility", ""))]
     dl = "".join(f'<div class="ct-row"><dt>{_esc(k)}</dt><dd>{_esc(v)}</dd></div>' for k, v in rows)
     return (f'<div class="approval-head"><span class="ap-dot"></span>'
-            f'Approval required &mdash; you are the human in the loop</div>'
+            f'Your approval needed &mdash; nothing is saved until you sign off</div>'
             f'<dl class="contract">{dl}</dl>')
 
 

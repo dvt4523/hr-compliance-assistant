@@ -188,14 +188,15 @@ def build_graph(llm: Optional[LLMClient] = None):
 
     def approval_gate_node(state: CaseState) -> dict:
         det = state["draft"]
+        name = (state.get("employee") or {}).get("name", state["employee_id"])
         req = ApprovalRequest(
-            action=f"Finalize {state['route']['domain']} determination for {state['employee_id']}",
-            reason_for_gate="A compliance determination affects an employee's legal rights.",
+            action=f"Save this answer to {name}'s case history",
+            reason_for_gate="It affects an employee's leave or pay, so a person signs off first.",
             evidence={"answer": det["answer"], "citations": det["citations"],
                       "tool_result": state.get("tool_result"),
                       "conflict_flag": det.get("conflict_flag")},
-            effect="Records the determination in the case log.",
-            reversibility="Reversible: a log entry can be superseded.",
+            effect="Records the answer, its sources, and your decision in this employee's case log.",
+            reversibility="Yes — a saved answer can be updated or replaced later.",
         )
         decision = interrupt(req.model_dump())     # pauses; resume value returned here
         return {"approval": decision}
