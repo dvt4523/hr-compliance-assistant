@@ -252,10 +252,20 @@ CSS = """
 .sec-label { font-size:.72rem; letter-spacing:.13em; text-transform:uppercase;
   color:#8a7a52; font-weight:700; margin:4px 2px -4px; }
 
+/* employee card picker */
+.emp-grid { display:grid !important; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.emp-card { text-align:left !important; white-space:pre-line !important; line-height:1.35 !important;
+  background:#fffef9 !important; border:1px solid var(--line) !important; border-radius:12px !important;
+  padding:12px 14px !important; color:#3a5670 !important; font-weight:600 !important; font-size:.8rem !important;
+  box-shadow:none !important; min-height:auto !important;
+  transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+.emp-card::first-line { font-size:.98rem; color:var(--navy); }
+.emp-card:hover { border-color:var(--gold) !important; transform:translateY(-1px);
+  box-shadow:0 6px 18px -12px rgba(18,50,78,.5) !important; }
+
 /* profile */
-.profile-card, .profile-empty { border:1px solid var(--line); border-radius:14px;
-  background:#fffef9; padding:16px 18px; }
-.profile-empty { color:#8a8676; font-style:italic; }
+.profile-card { border:1px solid var(--line); border-radius:14px; background:#fffef9; padding:16px 18px; }
+.profile-empty { color:#9a927e; font-style:italic; font-size:.88rem; padding:2px 2px 6px; }
 .pc-head { display:flex; align-items:baseline; gap:10px; }
 .pc-name { font-family:'Fraunces',Georgia,serif; font-size:1.28rem; font-weight:600; color:var(--navy); }
 .pc-id { font-family:'IBM Plex Mono',monospace; font-size:.74rem; color:#fff; background:var(--navy);
@@ -328,10 +338,13 @@ def build_blocks():
             '<span class="disc-chip">Educational demo · not legal advice</span>'
             '</div>')
 
-        with gr.Row():
-            emp_dd = gr.Dropdown(choices=_employee_choices(), label="Employee case", scale=4)
-            open_btn = gr.Button("Open case", variant="primary", scale=1)
-        profile_html = gr.HTML('<div class="profile-empty">Select an employee to open a case.</div>')
+        gr.HTML('<div class="sec-label">Select a case</div>')
+        emp_buttons = []
+        with gr.Row(elem_classes="emp-grid"):
+            for _eid, _e in data_loader.load_employees().items():
+                _b = gr.Button(f"{_e['name']}\n{_e['job_title']}", elem_classes="emp-card")
+                emp_buttons.append((_b, _eid))
+        profile_html = gr.HTML('<div class="profile-empty">Select a case above to begin.</div>')
 
         with gr.Row(equal_height=False):
             with gr.Column(scale=3):
@@ -363,7 +376,8 @@ def build_blocks():
         # wiring
         open_out = [session, emp_state, profile_html, turn_state, cfg_state, chatbot,
                     evidence_html, approval_row]
-        open_btn.click(open_case, [emp_dd, session], open_out)
+        for _btn, _eid in emp_buttons:
+            _btn.click(lambda s, e=_eid: open_case(e, s), [session], open_out)
 
         ask_out = [chatbot, evidence_html, approval_row, contract_html, edit_box,
                    cfg_state, turn_state, question]
