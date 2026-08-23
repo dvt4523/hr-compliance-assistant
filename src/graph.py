@@ -170,6 +170,20 @@ def build_graph(llm: Optional[LLMClient] = None):
                 citation=c.get("citation", ""), section=c.get("section", ""),
                 revision=c.get("revision", ""), span=span, url=c.get("url"),
             ))
+        # A COMPUTED determination is grounded by its tool's own governing law. If the
+        # drafter answered but cited no law, attach the tool's citations deterministically
+        # (these are the real statutes the calculator relied on) so a valid, deterministic
+        # answer isn't lost to fail-closed. Informational (benefits) has no tool backstop,
+        # so it must earn its own citation -> fail-closed still applies there.
+        if (domain in COMPUTED and out.status == "answered"
+                and not any(c.doc_type == "law" for c in citations)):
+            tr = state.get("tool_result") or {}
+            for lc in data_loader.get_chunks_by_citation(tr.get("citations", [])):
+                citations.append(Citation(
+                    doc_type="law", source=lc.get("source", ""), citation=lc.get("citation", ""),
+                    section=lc.get("section", ""), revision=lc.get("revision", ""),
+                    span=lc.get("verbatim_anchor", ""), url=lc.get("url")))
+
         conflict = guardrails.detect_conflict(retrieved, domain)
         det = GroundedDetermination(
             status="answered" if out.status == "answered" else "not_covered",

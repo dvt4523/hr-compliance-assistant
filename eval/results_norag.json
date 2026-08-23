@@ -10,8 +10,8 @@
     "citation_correctness": 0.0,
     "abstention_precision": 0.167,
     "abstention_recall": 1.0,
-    "mean_tokens": 1490,
-    "mean_seconds": 5.76,
+    "mean_tokens": 1514,
+    "mean_seconds": 6.26,
     "task_success_by_domain": {
       "fmla": 0.714,
       "flsa": 1.0,
@@ -31,9 +31,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1638,
-      "seconds": 6.05,
-      "answer": "Not enough source material was provided to answer this question. No governing passage was included.",
+      "tokens": 1667,
+      "seconds": 7.22,
+      "answer": "I cannot determine this from the provided materials because no governing passage was supplied to support the eligibility determination.",
       "cited": []
     },
     {
@@ -47,9 +47,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1619,
-      "seconds": 5.11,
-      "answer": "Not covered: no source passage was provided to support an eligibility determination.",
+      "tokens": 1641,
+      "seconds": 6.32,
+      "answer": "I can\u2019t determine eligibility from the provided materials because no governing passage was included.",
       "cited": []
     },
     {
@@ -63,9 +63,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1682,
-      "seconds": 6.27,
-      "answer": "The provided material does not include a passage that can be quoted to support an eligibility determination. I cannot answer this question from the permitted so",
+      "tokens": 1615,
+      "seconds": 5.47,
+      "answer": "I can\u2019t determine this from the provided passages because no governing passage was included to support the eligibility decision.",
       "cited": []
     },
     {
@@ -79,9 +79,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1735,
-      "seconds": 7.12,
-      "answer": "The employee is not eligible according to the computed determination, because the worksite requirement was not met. However, no source passage was provided to c",
+      "tokens": 1700,
+      "seconds": 6.85,
+      "answer": "I cannot provide a supported eligibility determination because no source passage was provided to cite.",
       "cited": []
     },
     {
@@ -95,9 +95,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1759,
-      "seconds": 8.01,
-      "answer": "The provided materials do not include the governing passage needed to cite this determination.",
+      "tokens": 1833,
+      "seconds": 7.88,
+      "answer": "I can\u2019t provide a supported answer because no source passage was supplied for the governing leave rule.",
       "cited": []
     },
     {
@@ -111,9 +111,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1783,
-      "seconds": 6.75,
-      "answer": "I cannot determine from the provided information whether the handbook\u2019s 8-week cap applies. No handbook provision or other governing passage was provided.",
+      "tokens": 1857,
+      "seconds": 7.57,
+      "answer": "Not enough information is provided to determine whether the handbook\u2019s 8-week cap applies. The available information does show 2 weeks of family and medical lea",
       "cited": []
     },
     {
@@ -127,9 +127,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1634,
-      "seconds": 5.74,
-      "answer": "The provided materials do not state whether bonding with a new child is a qualifying reason for family and medical leave.",
+      "tokens": 1636,
+      "seconds": 5.1,
+      "answer": "The provided information does not state whether bonding with a new child is a qualifying reason for family and medical leave.",
       "cited": []
     },
     {
@@ -143,9 +143,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1327,
-      "seconds": 5.72,
-      "answer": "The provided materials do not include a passage establishing the applicable minimum wage rule, so I cannot determine this from the permitted sources.",
+      "tokens": 1382,
+      "seconds": 6.11,
+      "answer": "I can\u2019t provide a supported determination because no governing passage was provided. The computed result indicates the employee is paid $15.00 per hour and the ",
       "cited": []
     },
     {
@@ -159,9 +159,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1572,
-      "seconds": 7.11,
-      "answer": "I can\u2019t determine this from the provided passages because no governing wage rule was included.",
+      "tokens": 1621,
+      "seconds": 7.88,
+      "answer": "The provided materials do not include a passage stating the applicable minimum-wage rule, so I cannot answer this question here.",
       "cited": []
     },
     {
@@ -175,9 +175,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1597,
-      "seconds": 6.53,
-      "answer": "I can\u2019t determine this from the provided passages because no governing overtime rule was included.",
+      "tokens": 1656,
+      "seconds": 7.51,
+      "answer": "Not covered because no governing passage was provided.",
       "cited": []
     },
     {
@@ -191,9 +191,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1638,
-      "seconds": 6.89,
-      "answer": "The available materials do not include a passage governing this question, so I cannot determine whether the employee has overtime this week.",
+      "tokens": 1630,
+      "seconds": 7.18,
+      "answer": "I can\u2019t determine this from the provided passages because no governing overtime rule text was included.",
       "cited": []
     },
     {
@@ -207,9 +207,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1544,
-      "seconds": 6.08,
-      "answer": "The available information does not include a governing passage to support an answer about whether this salaried employee is owed overtime.",
+      "tokens": 1599,
+      "seconds": 8.99,
+      "answer": "The provided materials do not include a governing passage to support an answer about whether this salaried employee is owed overtime. I cannot determine this fr",
       "cited": []
     },
     {
@@ -223,9 +223,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1717,
-      "seconds": 6.82,
-      "answer": "I can\u2019t determine this from the provided materials because no governing passage was included. The computed result indicates the employee is non-exempt and has o",
+      "tokens": 1755,
+      "seconds": 7.71,
+      "answer": "I can\u2019t determine this from the provided materials because no governing passage was included. The computed result indicates the employee was misclassified as ex",
       "cited": []
     },
     {
@@ -239,9 +239,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 1299,
-      "seconds": 4.16,
-      "answer": "The 401(k) match is not provided in the available information.",
+      "tokens": 1295,
+      "seconds": 3.79,
+      "answer": "The provided information does not state the company\u2019s 401(k) match.",
       "cited": []
     },
     {
@@ -255,9 +255,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 2263,
-      "seconds": 8.59,
-      "answer": "The provided information does not address whether this employee keeps health insurance during family and medical leave. I cannot determine this from the availab",
+      "tokens": 2257,
+      "seconds": 9.23,
+      "answer": "The provided information does not address whether this employee keeps health insurance during family and medical leave. I cannot determine that from the availab",
       "cited": []
     },
     {
@@ -271,9 +271,9 @@
       "citation_pass": false,
       "should_withhold": true,
       "did_withhold": true,
-      "tokens": 1343,
-      "seconds": 4.29,
-      "answer": "The exact current balance in this employee\u2019s 401(k) account is not provided.",
+      "tokens": 1340,
+      "seconds": 4.69,
+      "answer": "The employee's exact 401(k) account balance is not provided.",
       "cited": []
     },
     {
@@ -287,8 +287,8 @@
       "citation_pass": false,
       "should_withhold": true,
       "did_withhold": true,
-      "tokens": 661,
-      "seconds": 2.44,
+      "tokens": 774,
+      "seconds": 3.18,
       "answer": "That's outside what I handle (FMLA leave, FLSA pay, and benefits). I can't answer this reliably from the policy and law on file \u2014 please escalate to HR leadersh",
       "cited": []
     },

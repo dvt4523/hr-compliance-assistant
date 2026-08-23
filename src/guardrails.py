@@ -62,17 +62,16 @@ def _find_chunk(cit: Citation) -> dict | None:
     return None
 
 
-# Domains whose "answered" determinations MUST be grounded in a citation.
-_GROUNDING_REQUIRED = {"fmla", "flsa_minwage", "flsa_overtime"}
+def check_grounding(det: GroundedDetermination, domain: str = "") -> GuardrailCheck:
+    """Every answered determination must carry >= 1 citation.
 
-
-def check_grounding(det: GroundedDetermination, domain: str) -> GuardrailCheck:
-    """An answered determination in a law/computed domain must carry >= 1 citation.
-
-    This closes the 'answered but ungrounded' hole that citation-fidelity (which only
-    checks the citations that exist) can't catch on its own.
+    Computed domains (FMLA/FLSA) are auto-grounded by their tool's own governing law in
+    the drafter, so they pass; the informational benefits domain has no tool backstop and
+    must earn its citation from retrieval — which is where this check (and fail-closed)
+    still bites. Closes the 'answered but ungrounded' hole that citation-fidelity alone
+    (it only checks the citations that exist) cannot catch.
     """
-    if det.status == "answered" and domain in _GROUNDING_REQUIRED and not det.citations:
+    if det.status == "answered" and not det.citations:
         return GuardrailCheck(name="grounding", passed=False,
                               detail="Answered determination carries no citation.")
     return GuardrailCheck(name="grounding", passed=True)
