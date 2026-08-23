@@ -152,17 +152,24 @@ def build_graph(llm: Optional[LLMClient] = None):
         )
         citations = []
         for u in out.used:
-            if 0 <= u.chunk_index < len(retrieved):
-                c = retrieved[u.chunk_index]
-                # For LAW chunks the verbatim_anchor is the authoritative governing phrase;
-                # use it as the span so fidelity holds regardless of how the model transcribed
-                # it. Policy chunks (no anchor) keep the model's quoted span (fidelity-checked).
+            if not (0 <= u.chunk_index < len(retrieved)):
+                continue
+            c = retrieved[u.chunk_index]
+            if c.get("doc_type") == "law":
+                # verbatim_anchor is the authoritative governing phrase -> fidelity-safe
                 span = c.get("verbatim_anchor") or u.span
-                citations.append(Citation(
-                    doc_type=c.get("doc_type", "policy"), source=c.get("source", ""),
-                    citation=c.get("citation", ""), section=c.get("section", ""),
-                    revision=c.get("revision", ""), span=span, url=c.get("url"),
-                ))
+            else:
+                # policy (no anchor): keep the model's quote only if it's actually verbatim.
+                # A fabricated span is DROPPED (not fatal) so one bad quote can't sink an
+                # otherwise-grounded determination.
+                span = u.span if (u.span and u.span in c.get("text", "")) else None
+            if not span:
+                continue
+            citations.append(Citation(
+                doc_type=c.get("doc_type", "policy"), source=c.get("source", ""),
+                citation=c.get("citation", ""), section=c.get("section", ""),
+                revision=c.get("revision", ""), span=span, url=c.get("url"),
+            ))
         conflict = guardrails.detect_conflict(retrieved, domain)
         det = GroundedDetermination(
             status="answered" if out.status == "answered" else "not_covered",

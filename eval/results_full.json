@@ -10,8 +10,8 @@
     "citation_correctness": 0.846,
     "abstention_precision": 0.75,
     "abstention_recall": 1.0,
-    "mean_tokens": 3874,
-    "mean_seconds": 13.65,
+    "mean_tokens": 4040,
+    "mean_seconds": 14.1,
     "task_success_by_domain": {
       "fmla": 0.857,
       "flsa": 1.0,
@@ -31,13 +31,14 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4762,
-      "seconds": 18.22,
-      "answer": "Yes. This employee is eligible for FMLA leave because the employee satisfies all three federal eligibility requirements: at least 12 months of employment, at le",
+      "tokens": 4952,
+      "seconds": 16.24,
+      "answer": "Yes. This employee is eligible for family and medical leave (FMLA). The employee meets all three federal requirements: 30 months of employment, 1,820 hours work",
       "cited": [
         "825.110(a)(1)",
         "825.110(a)(2)",
-        "825.110(a)(3)"
+        "825.110(a)(3)",
+        "825.200"
       ]
     },
     {
@@ -51,9 +52,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4799,
-      "seconds": 15.62,
-      "answer": "No. This employee is not eligible for FMLA leave because they have been employed for 8 months, but eligibility requires employment for \"at least 12 months.\" Alt",
+      "tokens": 4853,
+      "seconds": 15.13,
+      "answer": "No. This employee is not eligible for family and medical leave because they have been employed for 8 months, but the rule requires employment for \"at least 12 m",
       "cited": [
         "825.110(a)(1)"
       ]
@@ -69,9 +70,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4778,
-      "seconds": 15.61,
-      "answer": "No. The employee is not eligible for FMLA leave because the employee worked 900 hours during the preceding 12 months, which is below the required 1,250 hours. T",
+      "tokens": 4906,
+      "seconds": 16.53,
+      "answer": "No. This employee is not eligible for family and medical leave (FMLA) because they worked 900 hours in the last 12 months, below the required 1,250 hours. The e",
       "cited": [
         "825.110(a)(2)"
       ]
@@ -87,10 +88,12 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4734,
-      "seconds": 16.64,
-      "answer": "No. This employee is not eligible for FMLA leave because the worksite requirement is not met: the employee has 18 employees within 75 miles of the worksite, whi",
+      "tokens": 4940,
+      "seconds": 16.91,
+      "answer": "No. This employee is not eligible for family and medical leave under the federal rules because only 18 employees are employed within 75 miles of the worksite, w",
       "cited": [
+        "825.110(a)(1)",
+        "825.110(a)(2)",
         "825.110(a)(3)"
       ]
     },
@@ -105,9 +108,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4695,
-      "seconds": 16.13,
-      "answer": "This employee can take 2 more weeks of FMLA leave. The federal FMLA entitlement is 12 workweeks during a 12-month period, and the authoritative determination sh",
+      "tokens": 4806,
+      "seconds": 17.05,
+      "answer": "This employee can take 2 more weeks of family and medical leave (FMLA). The federal rule provides \u201ca total of 12 workweeks of leave during any 12-month period,\u201d",
       "cited": [
         "825.200"
       ]
@@ -123,8 +126,8 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": true,
-      "tokens": 6820,
-      "seconds": 26.82,
+      "tokens": 6919,
+      "seconds": 26.66,
       "answer": "I don't have a well-grounded answer for this. I can't answer this reliably from the policy and law on file \u2014 please escalate to HR leadership or employment coun",
       "cited": []
     },
@@ -139,9 +142,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4106,
-      "seconds": 13.4,
-      "answer": "Yes. Under federal FMLA, bonding with a new child qualifies when the leave is for the birth of a son or daughter and care for the newborn child, or for placemen",
+      "tokens": 4291,
+      "seconds": 14.89,
+      "answer": "Yes. Bonding with a new child is a qualifying reason for family and medical leave (FMLA) when the leave is for the birth of a child and care for the newborn, or",
       "cited": [
         "825.112"
       ]
@@ -157,9 +160,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 3985,
-      "seconds": 13.17,
-      "answer": "No. The employee is paid $15.00 per hour, which is $1.90 below California\u2019s applicable minimum wage of $16.90 per hour.",
+      "tokens": 4125,
+      "seconds": 16.37,
+      "answer": "No. The employee is paid $15.00 per hour, but the California minimum wage is $16.90 per hour. The pay is $1.90 below the required minimum.",
       "cited": [
         "1182.12"
       ]
@@ -175,9 +178,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4186,
-      "seconds": 14.9,
-      "answer": "Yes. The employee is paid $9.00 per hour, which is above the applicable federal minimum wage of $7.25 per hour.",
+      "tokens": 4572,
+      "seconds": 17.63,
+      "answer": "Yes. The employee is paid $9.00 per hour, which is above the applicable federal minimum wage of $7.25 an hour.",
       "cited": [
         "206(a)(1)"
       ]
@@ -193,9 +196,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4288,
-      "seconds": 15.43,
-      "answer": "Yes. This employee has 2.0 hours of overtime this week at one and one-half times the regular rate, with calculated overtime pay of $66.00. California\u2019s daily ov",
+      "tokens": 4526,
+      "seconds": 16.58,
+      "answer": "Yes. This employee has 2 overtime hours this week. They should be paid at one and one-half times their regular rate, for total overtime pay of $66.00. No double",
       "cited": [
         "510"
       ]
@@ -211,9 +214,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4269,
-      "seconds": 14.89,
-      "answer": "Yes. This employee has 4.0 hours of overtime this week, paid at one and one-half times the regular rate. The computed overtime pay is $54.00.",
+      "tokens": 4420,
+      "seconds": 15.09,
+      "answer": "Yes. This non-exempt employee has 4 overtime hours this week. The overtime pay is $54.00, calculated at one and one-half times the regular rate of $9.00 per hou",
       "cited": [
         "207(a)(1)"
       ]
@@ -229,9 +232,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 3989,
-      "seconds": 16.0,
-      "answer": "No. The computed determination classifies the employee as exempt, and exempt employees are not eligible for overtime pay.",
+      "tokens": 4194,
+      "seconds": 17.1,
+      "answer": "No. The computed determination classifies this employee as exempt, so the employee is not owed overtime. The computed overtime pay is $0.00. The handbook states",
       "cited": [
         "CH-3.1"
       ]
@@ -247,9 +250,9 @@
       "citation_pass": false,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 4821,
-      "seconds": 18.01,
-      "answer": "Yes. This employee is classified as non-exempt for overtime purposes despite being labeled exempt and salaried. Under the applicable California rule, overtime a",
+      "tokens": 4863,
+      "seconds": 15.83,
+      "answer": "Yes. This employee is treated as non-exempt, despite being salaried, so overtime is owed. Under the computed determination, the employee is owed $270 for 6 over",
       "cited": [
         "510",
         "CH-3.1"
@@ -266,9 +269,9 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 3123,
-      "seconds": 8.44,
-      "answer": "The company matches 50% of an employee\u2019s contributions up to 6% of eligible pay. Employees become eligible after 90 days of employment, and employer matching co",
+      "tokens": 3190,
+      "seconds": 8.25,
+      "answer": "The company matches 50% of your contributions, up to 6% of eligible pay. You become eligible after 90 days of employment. The employer match fully vests after t",
       "cited": [
         "BN-5.1"
       ]
@@ -284,10 +287,11 @@
       "citation_pass": true,
       "should_withhold": false,
       "did_withhold": false,
-      "tokens": 3582,
-      "seconds": 11.64,
-      "answer": "Yes. During FMLA leave, the employee keeps group health insurance coverage on the same conditions as if continuously employed and remains responsible for their ",
+      "tokens": 4323,
+      "seconds": 14.08,
+      "answer": "Yes. During approved family and medical leave, the employee keeps group health insurance on the same terms as if they were actively working. The employee must c",
       "cited": [
+        "BN-5.3",
         "825.209"
       ]
     },
@@ -302,8 +306,8 @@
       "citation_pass": false,
       "should_withhold": true,
       "did_withhold": true,
-      "tokens": 2027,
-      "seconds": 7.6,
+      "tokens": 2060,
+      "seconds": 6.44,
       "answer": "No policy or law passage on file governs this question. I can't answer this reliably from the policy and law on file \u2014 please escalate to HR leadership or emplo",
       "cited": []
     },
@@ -319,7 +323,7 @@
       "should_withhold": true,
       "did_withhold": true,
       "tokens": 774,
-      "seconds": 3.2,
+      "seconds": 3.08,
       "answer": "That's outside what I handle (FMLA leave, FLSA pay, and benefits). I can't answer this reliably from the policy and law on file \u2014 please escalate to HR leadersh",
       "cited": []
     },
@@ -335,7 +339,7 @@
       "should_withhold": true,
       "did_withhold": true,
       "tokens": 0,
-      "seconds": 0.0,
+      "seconds": 0.01,
       "answer": "I can only discuss the employee whose case is open. (References another employee (Marcus Bello).)",
       "cited": []
     }

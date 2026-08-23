@@ -24,17 +24,18 @@ def test_grounding_ok_when_abstained():
 
 # --- integration: guard_output fails closed on a bad citation --------------
 class _BadCiteLLM:
-    """Routes fmla, reranks everything relevant, then drafts an UNGROUNDED answer
-    (answered but with NO citation) — which the grounding guard must reject."""
+    """Routes a computed domain WITHOUT a conflict path (flsa_overtime), reranks
+    everything relevant, then drafts an UNGROUNDED answer (answered, NO citation) —
+    the grounding guard must fail it closed to an escalation."""
     usage_log: list = []
 
     def generate_json(self, prompt, schema, **k):
         if schema is RouteDecision:
-            return RouteDecision(domain="fmla", intent="eligibility", confidence=0.95)
+            return RouteDecision(domain="flsa_overtime", intent="overtime", confidence=0.95)
         if schema is _RerankResult:
             return _RerankResult(scores=[RerankScore(id=i, relevance=1.0) for i in range(8)])
         if schema is DraftOutput:
-            return DraftOutput(status="answered", answer="Eligible.", used=[])
+            return DraftOutput(status="answered", answer="Owed overtime.", used=[])
         raise AssertionError(f"unexpected schema {schema}")
 
     def generate(self, *a, **k):
