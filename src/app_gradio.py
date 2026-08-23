@@ -331,6 +331,14 @@ CSS = """
   border-top:1px dotted var(--line); font-size:.87rem; }
 .contract dt { color:#8a7a52; font-weight:700; }
 .contract dd { margin:0; color:#3f4d57; }
+
+/* light-canvas safety net (design is light-only) + flatten Gradio's nested boxes */
+.gradio-container { background:#f4efe4 !important; }
+.approval .block, .approval .form { background:transparent !important; border:none !important;
+  box-shadow:none !important; }
+.approval label span, .approval .block-title { color:#8a5a12 !important; }
+.gradio-container textarea, .gradio-container input[type=text] {
+  background:#fffdf7 !important; color:#17293a !important; }
 """
 
 
@@ -405,5 +413,13 @@ def build_blocks():
     return demo
 
 
+# Force the light palette (the whole design is light; dark mode makes text vanish).
+# Redirect early, before Gradio renders, if the client isn't already in light mode.
+FORCE_LIGHT_HEAD = (
+    "<script>if(new URLSearchParams(location.search).get('__theme')!=='light'){"
+    "const u=new URL(location.href);u.searchParams.set('__theme','light');"
+    "location.replace(u.toString());}</script>"
+)
+
 if __name__ == "__main__":
-    build_blocks().launch(theme=THEME, css=CSS)
+    build_blocks().launch(theme=THEME, css=CSS, head=FORCE_LIGHT_HEAD)
