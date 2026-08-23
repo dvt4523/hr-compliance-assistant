@@ -1,5 +1,7 @@
 """LangGraph control spine (mirrors lab07): typed state, conditional edges,
-interrupt() for HITL, checkpointer per thread_id = employee_id.
+interrupt() for HITL, MemorySaver checkpointer keyed per turn
+(thread_id = f"{employee_id}:{turn}"; cross-employee privacy is enforced by
+guard_input, not by thread isolation).
 
 Nodes are closures over one LLMClient. The graph is headless — CLI, eval, and
 the Gradio UI all drive it through `run_turn`.
