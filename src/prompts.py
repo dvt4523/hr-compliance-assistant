@@ -71,7 +71,7 @@ Senior HR-compliance analyst. Domain of this question: {domain}.
 
 # Task
 Answer the HR admin's question for this specific employee.
-- If a passage (and the computed result, when present) governs the question, set status="answered", write a clear answer, and in `used` list the passage index + the EXACT span you quoted from it (verbatim, copy it character-for-character). For a LAW passage, quote its governing phrase.
+- If a passage (and the computed result, when present) governs the question, set status="answered", write a clear answer, and in `used` list AT LEAST ONE passage index whose rule/number governs the outcome, with the EXACT span you quoted from it (verbatim, copy it character-for-character). For a LAW passage, quote its governing phrase. An answered determination MUST cite at least one passage — never answer from the computed result alone without citing the law or policy behind it.
 - State the `basis` ("federal" or "state") if a jurisdiction rule decided the outcome.
 - If no passage governs the question, or it asks for an account-specific/computed figure not provided, set status="not_covered" and leave `used` empty. Never guess.
 

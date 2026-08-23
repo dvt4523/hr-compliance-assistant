@@ -120,7 +120,13 @@ def build_graph(llm: Optional[LLMClient] = None):
             res = check_minimum_wage(emp, site)
         else:  # flsa_overtime
             res = compute_overtime(emp, site)
-        return {"tool_result": res.model_dump()}
+        result = res.model_dump()
+        # Inject the determination's own governing chunks so the drafter always sees
+        # the deciding rule (generic retrieval doesn't reliably surface the exact prong).
+        gov = data_loader.get_chunks_by_citation(result.get("citations", []))
+        gov_ids = {c["id"] for c in gov}
+        merged = gov + [c for c in state.get("retrieved", []) if c["id"] not in gov_ids]
+        return {"tool_result": result, "retrieved": merged}
 
     def draft_node(state: CaseState) -> dict:
         domain = state["route"]["domain"]
@@ -134,10 +140,14 @@ def build_graph(llm: Optional[LLMClient] = None):
         for u in out.used:
             if 0 <= u.chunk_index < len(retrieved):
                 c = retrieved[u.chunk_index]
+                # For LAW chunks the verbatim_anchor is the authoritative governing phrase;
+                # use it as the span so fidelity holds regardless of how the model transcribed
+                # it. Policy chunks (no anchor) keep the model's quoted span (fidelity-checked).
+                span = c.get("verbatim_anchor") or u.span
                 citations.append(Citation(
                     doc_type=c.get("doc_type", "policy"), source=c.get("source", ""),
                     citation=c.get("citation", ""), section=c.get("section", ""),
-                    revision=c.get("revision", ""), span=u.span, url=c.get("url"),
+                    revision=c.get("revision", ""), span=span, url=c.get("url"),
                 ))
         conflict = guardrails.detect_conflict(retrieved, domain)
         det = GroundedDetermination(

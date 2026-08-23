@@ -23,6 +23,14 @@ def test_employees_and_sites():
         assert e["site_id"] in sites
 
 
+def test_get_chunks_by_citation():
+    # the FMLA tenure prong is fetchable by its citation string (order preserved)
+    got = data_loader.get_chunks_by_citation(
+        ["29 CFR §825.110(a)(1)", "29 CFR §825.200"])
+    assert [c["section"] for c in got] == ["825.110(a)(1)", "825.200"]
+    assert data_loader.get_chunks_by_citation(["nope"]) == []
+
+
 def test_state_rules_present():
     rules = data_loader.load_state_rules()
     assert set(rules) >= {"US", "CA", "TX"}

@@ -3,13 +3,7 @@ from src import config
 from src.graph import build_graph, run_turn
 from src.guardrails import check_grounding
 from src.retrieval import _RerankResult
-from src.schemas import (
-    DraftOutput,
-    GroundedDetermination,
-    RerankScore,
-    RouteDecision,
-    UsedCite,
-)
+from src.schemas import DraftOutput, GroundedDetermination, RerankScore, RouteDecision
 
 
 # --- unit: grounding guard -------------------------------------------------
@@ -30,7 +24,8 @@ def test_grounding_ok_when_abstained():
 
 # --- integration: guard_output fails closed on a bad citation --------------
 class _BadCiteLLM:
-    """Routes fmla, reranks everything relevant, then drafts an UNGROUNDED span."""
+    """Routes fmla, reranks everything relevant, then drafts an UNGROUNDED answer
+    (answered but with NO citation) — which the grounding guard must reject."""
     usage_log: list = []
 
     def generate_json(self, prompt, schema, **k):
@@ -39,8 +34,7 @@ class _BadCiteLLM:
         if schema is _RerankResult:
             return _RerankResult(scores=[RerankScore(id=i, relevance=1.0) for i in range(8)])
         if schema is DraftOutput:
-            return DraftOutput(status="answered", answer="Eligible.",
-                               used=[UsedCite(chunk_index=0, span="NOT A REAL SPAN zzz")])
+            return DraftOutput(status="answered", answer="Eligible.", used=[])
         raise AssertionError(f"unexpected schema {schema}")
 
     def generate(self, *a, **k):

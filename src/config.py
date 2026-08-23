@@ -15,12 +15,16 @@ load_dotenv()
 SIRAYA_API_KEY = os.getenv("SIRAYA_API_KEY")
 SIRAYA_BASE_URL = os.getenv("SIRAYA_BASE_URL", "https://llm.siraya.ai/v1")
 
-# Role-based model tiering (all verified to support json_schema on our key).
+# Role-based model tiering (all verified to support strict json_schema on our key,
+# incl. nested schemas). NOTE: DeepSeek is json_object-only -> unusable for these
+# structured steps. The reasoning tier drives answer quality; router/rerank are cheap.
+# router/rerank kept on the proven gemini-2.5-flash-lite (stable reranker; 3.1-flash-lite
+# showed run-to-run recall variance that abstained valid queries). Reasoning = gpt-5.6-luna.
 ROUTER_MODEL = os.getenv("SIRAYA_ROUTER_MODEL", "gemini-2.5-flash-lite")
 RERANK_MODEL = os.getenv("SIRAYA_RERANK_MODEL", "gemini-2.5-flash-lite")
-DRAFT_MODEL = os.getenv("SIRAYA_DRAFT_MODEL", "gemini-2.5-flash")
-CHAT_MODEL = os.getenv("SIRAYA_CHAT_MODEL", "gemini-2.5-flash")
-REASONING_MODEL = os.getenv("SIRAYA_REASONING_MODEL", "claude-sonnet-4.5")
+DRAFT_MODEL = os.getenv("SIRAYA_DRAFT_MODEL", "gpt-5.6-luna")
+CHAT_MODEL = os.getenv("SIRAYA_CHAT_MODEL", "gemini-3.5-flash")
+REASONING_MODEL = os.getenv("SIRAYA_REASONING_MODEL", "gpt-5.6-luna")
 
 # --- Pinned constants ------------------------------------------------------
 # TODAY is pinned (labs pin a fixed "today"); do NOT use date.today() in logic.

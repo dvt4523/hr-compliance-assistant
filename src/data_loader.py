@@ -48,6 +48,24 @@ def load_state_rules() -> dict[str, dict]:
     return _load(config.STATE_RULES_FILE)["jurisdictions"]
 
 
+def get_chunks_by_citation(citations: list[str]) -> list[dict]:
+    """Return corpus chunks whose `citation` is in the given list (order follows `citations`).
+
+    Used to inject a computed determination's own governing law chunks into the
+    drafter's context, so the deciding rule is always available to cite.
+    """
+    by_cite: dict[str, dict] = {}
+    for c in load_corpus():
+        by_cite.setdefault(c.get("citation", ""), c)
+    seen, out = set(), []
+    for cite in citations:
+        chunk = by_cite.get(cite)
+        if chunk and chunk["id"] not in seen:
+            seen.add(chunk["id"])
+            out.append(chunk)
+    return out
+
+
 def site_for_employee(employee: dict) -> dict:
     """Join an employee to their worksite via site_id."""
     return load_sites()[employee["site_id"]]
