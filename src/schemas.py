@@ -60,6 +60,21 @@ class GroundedDetermination(BaseModel):
     disclaimer: str = ""
 
 
+# --- Drafter output (LLM) -> assembled into GroundedDetermination ----------
+# The model returns only the chunk index + the exact span it used; we build the
+# Citation deterministically from the matched chunk so metadata can't drift.
+class UsedCite(BaseModel):
+    chunk_index: int = Field(description="Index of the passage relied on, as shown in the prompt.")
+    span: str = Field(description="The exact text quoted from that passage (verbatim).")
+
+
+class DraftOutput(BaseModel):
+    status: Literal["answered", "not_covered"]
+    answer: str
+    used: list[UsedCite] = Field(default_factory=list)
+    basis: Optional[str] = Field(default=None, description="'federal' or 'state' if a jurisdiction rule applied.")
+
+
 # --- Deterministic tool results -------------------------------------------
 class RuleCheck(BaseModel):
     rule: str
